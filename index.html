@@ -632,10 +632,12 @@
     if (film.duration) hero.style.setProperty("--film-progress", film.currentTime / film.duration);
   });
   button.addEventListener("click", function(){ enabled = !enabled; update(); });
-  reduced.addEventListener("change", function(){
+  function preferenceChanged(){
     enabled = !reduced.matches && !(connection && connection.saveData);
     update();
-  });
+  }
+  if (reduced.addEventListener) reduced.addEventListener("change", preferenceChanged);
+  else if (reduced.addListener) reduced.addListener(preferenceChanged);
   document.addEventListener("visibilitychange", update);
   if ("IntersectionObserver" in window){
     new IntersectionObserver(function(entries){ visible = entries[0].isIntersecting; update(); }).observe(hero);
