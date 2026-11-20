@@ -107,7 +107,7 @@
   .hero-session{font-size:10px;color:#a7b49a;margin:0}.hero-session b{font-weight:600;color:var(--lime)}
   .motion-toggle{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:transparent;border:1px solid #465536;border-radius:0;color:var(--text);padding:11px 13px;min-height:44px;font-size:10px;white-space:nowrap}
   .motion-toggle[hidden]{display:none}.motion-toggle:hover{color:var(--lime);border-color:var(--lime)}.motion-icon{font-size:12px;letter-spacing:0}
-  .motion-paused .hero *,.motion-paused .marquee-track,.motion-paused .wordmark .dot{animation-play-state:paused!important}
+  .motion-paused .hero *,.motion-paused .hero *::before,.motion-paused .hero *::after,.motion-paused .marquee-track,.motion-paused .wordmark .dot{animation-play-state:paused!important}
   @keyframes signalOrbit{to{transform:rotate(360deg)}}
   @keyframes signalTrace{to{stroke-dashoffset:-1750}}
   @keyframes signalBars{from{transform:scaleY(.35);opacity:.5}to{transform:scaleY(1);opacity:1}}
@@ -137,7 +137,7 @@
     .hero-stats{width:100%;flex-basis:100%;gap:18px}.hero-stat .n{font-size:29px}.motion-toggle{margin-left:auto}
     .hero-session{display:block;font-size:9px;max-width:155px;line-height:1.7}
   }
-  @media(prefers-reduced-motion:reduce){.hero *{animation:none!important}}
+  @media(prefers-reduced-motion:reduce){.hero *,.hero *::before,.hero *::after{animation:none!important}}
 
   /* ---------- marquee ---------- */
   .marquee{border-bottom:1px solid var(--line);background:var(--lime);color:var(--lime-ink);overflow:hidden;padding:9px 0}
