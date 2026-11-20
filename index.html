@@ -603,8 +603,9 @@
 
   function update(){
     document.documentElement.classList.toggle("motion-paused", !enabled || !visible || document.hidden);
-    label.textContent = enabled ? "Pause motion" : "Play motion";
-    icon.textContent = enabled ? "Ⅱ" : "▶";
+    label.textContent = failed ? "Motion unavailable" : enabled ? "Pause motion" : "Play motion";
+    icon.textContent = failed ? "—" : enabled ? "Ⅱ" : "▶";
+    button.disabled = failed;
     if (!enabled || !visible || document.hidden || failed){ film.pause(); return; }
     if (!loaded){
       film.querySelector("source").src = film.querySelector("source").dataset.src;
@@ -624,8 +625,6 @@
     failed = true;
     enabled = false;
     update();
-    label.textContent = "Motion unavailable";
-    button.disabled = true;
   }
   film.addEventListener("error", mediaError);
   film.querySelector("source").addEventListener("error", mediaError);
